@@ -1,0 +1,26 @@
+{
+  "name": "simple-site-map",
+  "version": "1.0.0",
+  "description": "A small module to ease the creation of sitemap.xml etc",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/russjfreeman/simple-site-map.git"
+  },
+  "keywords": [
+    "sitemap",
+    "sitemap.xml"
+  ],
+  "author": "Russ J Freeman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/russjfreeman/simple-site-map/issues"
+  },
+  "homepage": "https://github.com/russjfreeman/simple-site-map#readme",
+  "dependencies": {
+    "uri-js": "^4.2.2"
+  }
+}
