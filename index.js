@@ -22,7 +22,7 @@ class SimpleSiteMap {
 
         this.setOptions(options);
 
-        this.index = `<?xml version='1.0' encoding='UTF-8'><sitemapindex xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>`
+        this.index = `<?xml version='1.0' encoding='UTF-8'?><sitemapindex xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>`
         this.siteMapIndexID = 0;
     }
 
@@ -68,6 +68,7 @@ class SimpleSiteMap {
         }
 
         function getItemPretty(item) {
+            //  No doubt about it; This is ugly but it works, and nicer than \r\n\t etc.
             return `
 <url>
     <loc>${ item.url}</loc>
@@ -83,7 +84,6 @@ class SimpleSiteMap {
         this.content.forEach((item, index) => {
             if ( (index > 0 && index % limit == 0) || sm.length > maxSitemapSizeBytes) {
                 this.writeSitemapFile(sm);
-                //  Write out what we have into a SM.xml and add a ref to it for the index
                 sm = "";
             }
             sm += makeItem(item);
@@ -99,7 +99,7 @@ class SimpleSiteMap {
     }
 
     writeSitemapFile(content) {
-        const sitemapHeader = "<?xml version='1.0' encoding='TF-8'?><urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>"
+        const sitemapHeader = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         const sitemapFooter = "</urlset>"
 
         const dtNow = new Date();
