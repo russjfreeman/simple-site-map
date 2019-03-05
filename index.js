@@ -10,6 +10,7 @@ const today = new Date();
 class SimpleSiteMap {
     constructor(options) {
         this.content = [];
+        this.files = [];
 
         this.options = {
             path: "/",
@@ -94,8 +95,11 @@ class SimpleSiteMap {
         }
         this.index += "</sitemapindex>";
 
-        fs.writeFileSync( this.options.saveToPath + "sitemap.xml", this.index);
+        const indexFilename = "sitemap.xml";
 
+        fs.writeFileSync( this.options.saveToPath + indexFilename, this.index);
+        this.files.push( indexFilename );
+        return this.files;
     }
 
     writeSitemapFile(content) {
@@ -108,6 +112,7 @@ class SimpleSiteMap {
         this.index += `<sitemap><loc>https://${this.options.hostname + this.options.path + filename}</loc><lastmod>${date}</lastmod></sitemap>`
         fs.writeFileSync( this.options.saveToPath + filename, sitemapHeader + content + sitemapFooter);
         this.siteMapIndexID++;
+        this.files.push( filename );
     }
 }
 
@@ -122,6 +127,7 @@ class smURL {
 
 function encodeURL( srcURL ) {
     //  This needs a lot of love BUT I don't want to require anything else
+    //  So we can kind of fudge it. Anyone have a more complete solution?
     //  
     const urlBits = srcURL.split( "?" );
     if( urlBits.length > 1){

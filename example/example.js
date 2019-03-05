@@ -22,11 +22,17 @@ sss.add( [
     {url: "https://example.com/url2/"}
 ] );
 
-for( let i = 0; i < 100; i++ ) {
+for( let i = 0; i < 500000; i++ ) {
     sss.add( "https://example.com/" + i)
 }
 
 
-sss.save();
+
+const files = sss.save();
+
+console.log( "Written the following files...")
+files.forEach( file => {
+    console.log( "\t" + file );
+})
 
 console.log( "finished")
