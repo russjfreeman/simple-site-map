@@ -6,20 +6,22 @@
 -   [Typical usage][2]
 -   [options][3]
     -   [Properties][4]
--   [constructor][5]
-    -   [Parameters][6]
--   [add][7]
+-   [url][5]
+    -   [Properties][6]
+-   [constructor][7]
     -   [Parameters][8]
--   [addURL][9]
+-   [add][9]
     -   [Parameters][10]
--   [save][11]
+-   [addURL][11]
+    -   [Parameters][12]
+-   [save][13]
 
 ## simple-site-map
 
 Simple little module with no external dependencies that generates sitemap XML files.
 
--   Validate your sitemap: [https://webmaster.yandex.com/tools/sitemap/][12]
--   Read about the protocol: [https://www.sitemaps.org/protocol.html][13]
+-   Validate your sitemap: [https://webmaster.yandex.com/tools/sitemap/][14]
+-   Read about the protocol: [https://www.sitemaps.org/protocol.html][15]
 
 ## Typical usage
 
@@ -64,16 +66,29 @@ console.log( "finished")
 
 The options object
 
-Type: [Object][14]
+Type: [Object][16]
 
 ### Properties
 
--   `path` **[string][15]** Where to save the files. Default './'
--   `limit` **[number][16]** How many URLs per file. Max, and default: 50000
--   `pretty` **[boolean][17]** Whether to save the files in a pretty way (with whitespace)
--   `hostname` **[string][15]** The domain of your website
--   `priority` **[number][16]** Default: 0.5
--   `changeFrequency` **[string][15]** Default: "weekly"
+-   `saveToPath` **[string][17]** Where to save the files. Default './'
+-   `limit` **[number][18]** How many URLs per file. Max, and default: 50000
+-   `pretty` **[boolean][19]** Whether to save the files in a pretty way (with whitespace)
+-   `hostname` **[string][17]** The domain of your website
+-   `priority` **[number][18]** Default priority to use. Default: 0.5
+-   `changeFrequency` **[string][17]** Default change frequency to use. Default: "weekly"
+
+## url
+
+The url object
+
+Type: [Object][16]
+
+### Properties
+
+-   `url` **[string][17]** the url of the link you are adding
+-   `dt` **[date][20]** date/time the url was updated
+-   `priority` **[number][18]** Default: 0.5
+-   `changeFrequency` **[string][17]** Default: "weekly"
 
 ## constructor
 
@@ -81,7 +96,7 @@ The SimpleSiteMap object
 
 ### Parameters
 
--   `options` **[options][18]** 
+-   `options` **[options][21]** 
 
 ## add
 
@@ -99,13 +114,13 @@ Add an item to the sitemap
 ### Parameters
 
 -   `url`  
--   `A` **[url][19]** single object, or a URL
+-   `A` **[url][22]** single object, or a URL
 
 ## save
 
 Save your sitemap XML files
 
-Returns **any** An array of filenames
+Returns **[Array][23]** An array of filenames
 
 [1]: #simple-site-map
 
@@ -115,32 +130,40 @@ Returns **any** An array of filenames
 
 [4]: #properties
 
-[5]: #constructor
+[5]: #url
 
-[6]: #parameters
+[6]: #properties-1
 
-[7]: #add
+[7]: #constructor
 
-[8]: #parameters-1
+[8]: #parameters
 
-[9]: #addurl
+[9]: #add
 
-[10]: #parameters-2
+[10]: #parameters-1
 
-[11]: #save
+[11]: #addurl
 
-[12]: https://webmaster.yandex.com/tools/sitemap/
+[12]: #parameters-2
 
-[13]: https://www.sitemaps.org/protocol.html
+[13]: #save
 
-[14]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[14]: https://webmaster.yandex.com/tools/sitemap/
 
-[15]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[15]: https://www.sitemaps.org/protocol.html
 
-[16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[17]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[17]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[18]: #options
+[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[19]: https://developer.mozilla.org/docs/Web/API/URL/URL
+[19]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[20]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+[21]: #options
+
+[22]: #url
+
+[23]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

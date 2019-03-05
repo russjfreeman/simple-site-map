@@ -1,6 +1,6 @@
 'use strict';
 
-//  To make the readme: documentation  build index.js -f md  --markdown-toc -o readme.md
+//  To make the readme: documentation  build index.js -f md  -o readme.md
 
 
 /**
@@ -56,13 +56,23 @@ console.log( "finished")
 /**
  * The options object
  * @typedef {Object} options
- * @property {string} path - Where to save the files. Default './'
+ * @property {string} saveToPath - Where to save the files. Default './'
  * @property {number} limit - How many URLs per file. Max, and default: 50000
  * @property {boolean} pretty - Whether to save the files in a pretty way (with whitespace)
  * @property {string} hostname - The domain of your website
+ * @property {number} priority - Default priority to use. Default: 0.5
+ * @property {string} changeFrequency - Default change frequency to use. Default: "weekly"
+ */
+
+/**
+ * The url object
+ * @typedef {Object} url
+ * @property {string} url - the url of the link you are adding
+ * @property {date} dt - date/time the url was updated. Default: now
  * @property {number} priority - Default: 0.5
  * @property {string} changeFrequency - Default: "weekly"
  */
+
 
 const fs = require("fs");
 
@@ -138,7 +148,7 @@ class SimpleSiteMap {
     /**
      * 
      * Save your sitemap XML files
-     * @returns An array of filenames
+     * @returns {Array} An array of filenames
      */
     save() {
         const limit = this.options.limit;
