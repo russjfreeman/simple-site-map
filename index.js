@@ -5,6 +5,10 @@
 
 /**
   *  Simple little module with no external dependencies that generates sitemap XML files.
+  *  * Validate your sitemap: https://webmaster.yandex.com/tools/sitemap/
+  *  * Read about the protocol: https://www.sitemaps.org/protocol.html
+  * 
+  * 
   *  ## Typical usage
   *
   * ``` Javascript
@@ -42,6 +46,7 @@ files.forEach( file => {
 })
 
 console.log( "finished")
+
   *
   *  @module simple-site-map
   *

@@ -1,6 +1,7 @@
 'use strict';
 
 //  https://www.sitemaps.org/protocol.html
+//  To validate your sitemap: https://webmaster.yandex.com/tools/sitemap/
 
 const createSitemap = require("../index");
 

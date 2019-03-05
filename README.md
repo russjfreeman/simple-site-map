@@ -18,10 +18,13 @@
 
 Simple little module with no external dependencies that generates sitemap XML files.
 
+-   Validate your sitemap: [https://webmaster.yandex.com/tools/sitemap/][12]
+-   Read about the protocol: [https://www.sitemaps.org/protocol.html][13]
+
 ## Typical usage
 
 ```Javascript
-const createSitemap = require("../index");
+const createSitemap = require("simple-site-map");
 
 const sss = createSitemap( {
 saveToPath: "./",
@@ -61,16 +64,16 @@ console.log( "finished")
 
 The options object
 
-Type: [Object][12]
+Type: [Object][14]
 
 ### Properties
 
--   `path` **[string][13]** Where to save the files. Default './'
--   `limit` **[number][14]** How many URLs per file. Max, and default: 50000
--   `pretty` **[boolean][15]** Whether to save the files in a pretty way (with whitespace)
--   `hostname` **[string][13]** The domain of your website
--   `priority` **[number][14]** Default: 0.5
--   `changeFrequency` **[string][13]** Default: "weekly"
+-   `path` **[string][15]** Where to save the files. Default './'
+-   `limit` **[number][16]** How many URLs per file. Max, and default: 50000
+-   `pretty` **[boolean][17]** Whether to save the files in a pretty way (with whitespace)
+-   `hostname` **[string][15]** The domain of your website
+-   `priority` **[number][16]** Default: 0.5
+-   `changeFrequency` **[string][15]** Default: "weekly"
 
 ## constructor
 
@@ -78,7 +81,7 @@ The SimpleSiteMap object
 
 ### Parameters
 
--   `options` **[options][16]** 
+-   `options` **[options][18]** 
 
 ## add
 
@@ -96,7 +99,7 @@ Add an item to the sitemap
 ### Parameters
 
 -   `url`  
--   `A` **[url][17]** single object, or a URL
+-   `A` **[url][19]** single object, or a URL
 
 ## save
 
@@ -126,14 +129,18 @@ Returns **any** An array of filenames
 
 [11]: #save
 
-[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[12]: https://webmaster.yandex.com/tools/sitemap/
 
-[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[13]: https://www.sitemaps.org/protocol.html
 
-[14]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[14]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[15]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[15]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[16]: #options
+[16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[17]: https://developer.mozilla.org/docs/Web/API/URL/URL
+[17]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[18]: #options
+
+[19]: https://developer.mozilla.org/docs/Web/API/URL/URL
