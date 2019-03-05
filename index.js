@@ -1,5 +1,64 @@
 'use strict';
 
+//  To make the readme: documentation  build index.js -f md  --markdown-toc -o readme.md
+
+
+/**
+  *  Simple little module with no external dependencies that generates sitemap XML files.
+  *  ## Typical usage
+  *
+  * ``` Javascript
+const createSitemap = require("simple-site-map");
+
+const sss = createSitemap( {
+    saveToPath: "./",
+    hostname: "example.com",
+    pretty: true,
+    limit: 50000,
+} );
+
+
+sss.add( [
+    "https://example.com/one?thing=stuff&a=zzz",
+    "https://example.com/two"
+] );
+
+sss.add( [
+    {url: "https://example.com/url1/"},
+    {url: "https://example.com/url2/"}
+] );
+
+for( let i = 0; i < 500000; i++ ) {
+    sss.add( "https://example.com/" + i)
+}
+
+
+
+const files = sss.save();
+
+console.log( "Written the following files...")
+files.forEach( file => {
+    console.log( "\t" + file );
+})
+
+console.log( "finished")
+  *
+  *  @module simple-site-map
+  *
+  */
+
+
+/**
+ * The options object
+ * @typedef {Object} options
+ * @property {string} path - Where to save the files. Default './'
+ * @property {number} limit - How many URLs per file. Max, and default: 50000
+ * @property {boolean} pretty - Whether to save the files in a pretty way (with whitespace)
+ * @property {string} hostname - The domain of your website
+ * @property {number} priority - Default: 0.5
+ * @property {string} changeFrequency - Default: "weekly"
+ */
+
 const fs = require("fs");
 
 const maxSitemapSizeBytes = 50 * 1024 * 1024;
@@ -8,13 +67,18 @@ const maxURLsPerFile = 50000;
 const today = new Date();
 
 class SimpleSiteMap {
+    /**
+     * The SimpleSiteMap object
+     * @constructor
+     * @param {options} options
+     */    
     constructor(options) {
         this.content = [];
         this.files = [];
 
         this.options = {
-            path: "/",
-            limit: 100,
+            path: "./",
+            limit: 50000,
             pretty: false,
             hostname: "",
             priority: 0.5,
@@ -38,8 +102,10 @@ class SimpleSiteMap {
         }
     }
 
-    // Accepts: an item or an array of items
-    //  Items can be strings or objects like {url, dt, priority, changeFrequency}
+    /**
+     * Add an item to the sitemap
+     * @param {item} Array of objects, single object, a URL, or an array of URLs
+     */    
     add(item) {
         if (Array.isArray(item)) {
             item.forEach(i => {
@@ -50,7 +116,12 @@ class SimpleSiteMap {
         }
     }
 
-    addURL(url) {
+    /**
+     * 
+     * Add an item to the sitemap
+     * @param {url} A single object, or a URL
+     */
+   addURL(url) {
         if (typeof url === 'string' || url instanceof String) {
             this.content.push(new smURL(url));
         } else {
@@ -58,6 +129,12 @@ class SimpleSiteMap {
         }
     }
 
+    
+    /**
+     * 
+     * Save your sitemap XML files
+     * @returns An array of filenames
+     */
     save() {
         const limit = this.options.limit;
         const changeFrequency = this.options.changeFrequency;
