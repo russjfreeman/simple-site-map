@@ -57,6 +57,7 @@ console.log( "finished")
  * The options object
  * @typedef {Object} options
  * @property {string} saveToPath - Where to save the files. Default './'
+ * @property {string} path - The path, in the URL, for where the sitemap files are
  * @property {number} limit - How many URLs per file. Max, and default: 50000
  * @property {boolean} pretty - Whether to save the files in a pretty way (with whitespace)
  * @property {string} hostname - The domain of your website
@@ -92,7 +93,7 @@ class SimpleSiteMap {
         this.files = [];
 
         this.options = {
-            path: "./",
+            path: "/",
             limit: 50000,
             pretty: false,
             hostname: "",

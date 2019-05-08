@@ -7,6 +7,7 @@ const createSitemap = require("../index");
 
 const sss = createSitemap( {
     saveToPath: "./",
+    path: "/",
     hostname: "example.com",
     pretty: true,
     limit: 50000,
